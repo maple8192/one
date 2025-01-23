@@ -89,6 +89,20 @@ impl<'a> Scanner<'a> {
             digits.push(ch);
             self.src.next();
         }
+        if let Some(&'.') = self.src.peek() {
+            digits.push('.');
+            self.src.next();
+            while let Some(&ch) = self.src.peek() {
+                if ch.is_ascii_alphabetic() {
+                    return Err("invalid number suffix");
+                }
+                if !ch.is_ascii_digit() {
+                    break;
+                }
+                digits.push(ch);
+                self.src.next();
+            }
+        }
         let digits = digits.iter().collect::<String>();
         Ok(Token::Number(
             digits.parse().map_err(|_| "invalid number format")?,
