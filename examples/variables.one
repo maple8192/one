@@ -1,0 +1,15 @@
+a := 3;
+b := 4;
+c := a * b;
+d := 0;
+
+if c > 10 {
+    e := c * 10;
+    d = e;
+}
+
+println(a);
+println(b);
+println(c);
+println(d);
+# println(e); # error

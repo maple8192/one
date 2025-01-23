@@ -1,0 +1,13 @@
+fn is_prime(n) {
+    for x := 2, x * x <= n {
+        if n % x == 0 {
+            return false;
+        }
+    }
+    return true;
+}
+
+println("7 : " + is_prime(7));
+println("10 : " + is_prime(10));
+println("57 : " + is_prime(57));
+println("998244353 : " + is_prime(998244353));
